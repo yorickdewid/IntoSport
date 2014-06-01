@@ -1,0 +1,58 @@
+﻿@model Project.Models.MainView
+
+@{
+    ViewBag.Title = "Registreren beheerder";
+}
+
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+    <div class="product_title_big">Beheerder registreren</div>
+    @using (Html.BeginForm("Registreren", "Beheer"))
+    {
+        <table>
+            <tr>
+                <td style="width:35%"><div>Naam</div></td>
+                <td><div>@Html.EditorFor(model=>model.gebruiker.Naam)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Naam)</div></td>
+            </tr>
+            <tr>
+                <td><div>Email</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Email)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Email)</div></td>
+            </tr>
+            <tr>
+                <td><div>Wachtwoord</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Wachtwoord)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Wachtwoord)</div></td>
+            </tr>
+            <tr>
+                <td><div>Adres</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Adres)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Adres)</div></td>
+            </tr>
+            <tr>
+                <td><div>Postcode</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Postcode)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Postcode)</div></td>
+            </tr>
+            <tr>
+                <td><div>Plaats</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Woonplaats)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Woonplaats)</div></td>
+            </tr>
+            <tr>
+                <td><div>Telefoon</div></td>
+                <td><div>@Html.EditorFor(model => model.gebruiker.Telefoonnummer)
+                         @Html.ValidationMessageFor(model=>model.gebruiker.Telefoonnummer)</div></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="text-align:right"><input type = "submit" value = "Registreren" /></td>
+            </tr>
+        </table>
+    }
+    <p><a href="/Beheer/Beheerders" style="text-align: right; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;">Vorige</a></p>
+    </div>
+    <div class="bottom_prod_box_big"></div> 
+</div>

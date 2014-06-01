@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Voltooid";
+}
+<div class="center_title_bar">Winkelwagen Stap 4 van 4</div>
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Betaling Voltooid</div>
+        <p><b>Uw bestelling is door ons bevestigd</b></p><br />
+        <p>Wij zullen de producten zo snel mogelijk opsturen</p>
+        <p>Mocht u nog vragen hebben, laat het ons weten via de contactpagina</p><br />
+        <table style="width:95%;">
+                    <tr style="font-weight: bold">
+                        <td style="width:40%">Order</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Ordernummer:</td>
+                        <td>@ViewBag.OrderID</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>Verwerkt</td>
+                    </tr>
+                        <tr>
+                        <td>Verzending</td>
+                        <td>Binnen 2 dagen</td>
+                    </tr>
+            </table>
+    </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model Project.Models.MainView
+           
+@{
+    ViewBag.Title = "MijnAccount";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+    <div class="product_title_big">Mijn Account</div>
+    <table>
+        <tr>
+            <td>Naam</td>
+            <td>@Model.gebruiker.Naam</td>
+        </tr>
+        <tr>
+            <td>Adres</td>
+            <td>@Model.gebruiker.Adres</td>
+        </tr>
+         <tr>
+            <td>Postcode</td>
+            <td>@Model.gebruiker.Postcode</td>
+        </tr>
+         <tr>
+            <td>Woonplaats</td>
+            <td>@Model.gebruiker.Woonplaats</td>
+        </tr>
+         <tr>
+            <td>E-mail</td>
+            <td>@Model.gebruiker.Email</td>
+        </tr>
+         <tr>
+            <td>Telefoonnummer</td>
+            <td>@Model.gebruiker.Telefoonnummer</td>
+        </tr>
+         <tr>
+            <td><br /><a href="/Account/WijzigAccount" style="text-align: right; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;">Wijzig gegevens</a></td>
+        </tr>
+    </table>
+     </div>
+    <div class="bottom_prod_box_big"></div> 
+</div>

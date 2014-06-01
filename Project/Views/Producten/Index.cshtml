@@ -1,0 +1,20 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "Producten";
+}
+<div class="center_title_bar">Producten</div>
+@for (int i = 0; i < Model.ListProduct.Count; i++){
+<div class="prod_box">
+    <div class="top_prod_box"></div>
+    <div class="center_prod_box">            
+            <div class="product_title">@Model.ListProduct[i].Naam</div>
+            <div class="product_img"><a href="/Product/Detail?pid=@Model.ListProduct[i].ID"><img src="@Url.Content("~/Content/Upload/" + Model.ListProduct[i].Image)" height="100" width="100" alt="" title="" border="0" /></a></div>
+            <div class="prod_price"><span class="price">&euro;@String.Format("{0:0.00}", Model.ListProduct[i].Prijs)</span></div>                        
+    </div>
+    <div class="bottom_prod_box"></div>             
+    <div class="prod_details_tab">
+        <a href="/Winkelmand/Add?pid=@Model.ListProduct[i].ID" title="header=[Toevoegen aan winkelwagen] body=[&nbsp;] fade=[on]"><img src="@Url.Content("~/Content/images/cart.gif")" alt="" title="" border="0" class="left_bt" /></a>
+        <a href="/Product/Detail?pid=@Model.ListProduct[i].ID" class="prod_details">Meer</a>            
+    </div>                     
+</div>
+}

@@ -1,0 +1,38 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "MijnOrders";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Order #@Model.ListOrderRegel[0].OrderID</div>
+            <table style="width:95%;">
+                    <tr style="font-weight: bold">
+                        <td style="width: 50%">Product</td>
+                        <td style="width: 20%">Aantal</td>
+                        <td style="width: 30%;text-align: right">Subtotaal</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><div style="border-bottom:1px #999999 dashed"></div></td>
+                    </tr>
+                    @for (int q = 0; q < Model.ListOrderRegel.Count; q++)
+                    {
+                    <tr>
+                        <td><a href="/Product/Detail?pid=@Model.ListOrderRegel[q].ProductID" style="text-decoration: none; color: #1c4a52;">@Model.ListOrderRegel[q].ProductNaam</a></td>
+                        <td>@Model.ListOrderRegel[q].Aantal</td>
+                        <td style="text-align: right">&euro;@String.Format("{0:0.00}", (Model.ListOrderRegel[q].Subtotaal))</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><div style="border-bottom:1px #999999 dashed"></div></td>
+                    </tr>
+                    }
+                    <tr>
+                        <td colspan="5">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align:left;"><a href="/Order/MijnOrders/" style="text-align: left; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;">Mijn Orders</a></td>
+                    </tr>
+            </table>
+    </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>

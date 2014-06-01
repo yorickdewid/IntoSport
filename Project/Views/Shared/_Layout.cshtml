@@ -1,0 +1,232 @@
+@model Project.Models.MainView
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>Intosport</title>
+    <link href="@Url.Content("~/Content/Styles/style.css")" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/iecss.css")" />
+<![endif]-->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/boxOver.js")"></script>
+     <script type="text/javascript">
+         function bevestigkeus(url) {
+             var r = confirm("Weet u het zeker?");
+             if (r == true) {
+                 window.location = url;
+             }
+         }
+    </script>
+</head>
+<body>
+
+    <div id="main_container">
+        <div id="header">
+
+            <div id="logo">
+
+                <a href="/Home">
+                    <img src="@Url.Content("~/Content/images/logo.png")" alt="" title="" border="0" width="237" height="140" /></a>
+            </div>
+            <div class="oferte_content">
+                <div class="top_divider">
+                    <img src="@Url.Content("~/Content/images/header_divider.png")" alt="" title="" width="1" height="164" /></div>
+                <div class="oferta">
+
+                    <div class="oferta_content">
+                        <img src="@Url.Content("~/Content/Upload/nike_prestige.png")" alt="" width="94" height="92" border="0" class="oferta_img" />
+
+                        <div class="oferta_details">
+                            <div class="oferta_title">IntoSport</div>
+                            <div class="oferta_text">
+                                Welkom bij IntoSport, sinds 1978 een begrip in de sportwereld.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="top_divider">
+                    <img src="@Url.Content("~/Content/images/header_divider.png")" alt="" title="" width="1" height="164" /></div>
+
+            </div>
+            <!-- end of oferte_content-->
+
+
+        </div>
+
+        <div id="main_content">
+
+            <div id="menu_tab">
+                <div class="left_menu_corner"></div>
+                <ul class="menu">
+                    <li><a href="/Home" class="nav1">Home </a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Producten" class="nav2">Producten</a></li>
+                    <li class="divider"></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Account/MijnAccount" class="nav4">Mijn Account</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Order/MijnOrders" class="nav3">Mijn Orders</a></li>
+                        <li class="divider"></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Account/LogOn" class="nav4">Mijn Account</a></li>
+                        <li class="divider"></li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Account/LogOut" class="nav4">Uitloggen</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Account/Registreren" class="nav4">Registreren</a></li>
+                    }
+                    <li class="divider"></li>
+                    <li><a href="/Info/Verzenden" class="nav5">Verzenden</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Info/Contact" class="nav6">Contact</a></li>
+                    <li class="divider"></li>
+                    @if (User.IsInRole("Beheerder"))
+                    {
+                        <li><a href="/Beheer" class="nav2">Beheer</a></li>
+                        <li class="divider"></li>
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <li><a href="/Management/Management" class="nav2">Management</a></li>
+                        <li class="divider"></li>
+                    }
+                </ul>
+
+                <div class="right_menu_corner"></div>
+            </div>
+            <!-- end of menu tab -->
+
+            <div class="crumb_navigation">
+                Intosport: <a href="/Home"><span class="current">Home</span></a>
+
+            </div>
+
+
+            <div class="left_content">
+                <div class="title_box">Categorieën</div>
+
+                <ul class="left_menu">
+                    @for (int i = 0; i < Model.ListCategorie.Count; i++)
+                    {
+                        <li class="@if (i % 2 == 0)
+                                   { <text>even</text> }
+                                   else
+                                   { <text>odd</text> }"><a href="/Producten?cid=@Model.ListCategorie[i].ID">@Model.ListCategorie[i].Naam</a></li>
+                    }
+                </ul>
+
+
+                <div class="title_box">Uitgelicht</div>
+                <div class="border_box">
+                    <div class="product_title"><a href="/Product/Detail?pid=6">Derbystar Voetbal</a></div>
+                    <div class="product_img"><a href="/Product/Detail?pid=6">
+                        <img src="@Url.Content("~/Content/Upload/derbystar_voetbal.png")" alt="" title="" border="0" /></a></div>
+                    <div class="prod_price"> <span class="price">&euro;29,95</span></div>
+                </div>
+            </div>
+            <!-- end of left content -->
+
+
+            <div class="center_content">
+                <div style="background: url(@Url.Content("~/Content/images/bar_bg2.gif")) no-repeat center; float:left; padding: 0 0 0 40px; margin: 0 0 0 12px; height:51px; width: 520px;">
+                    @using (Html.BeginForm("Zoeken", "Producten"))
+                    {
+                        <input style="width: 461px; height: 27px; float: left; margin: 11px 0 0 -28px; border: 1px solid #09C; outline: none; border-radius: 4px 0 0 4px; padding: 0 0 0 7px;" id="SearchViewModel_Query" name="SearchViewModel.Query" type="text" />
+                        <input style="width: 65px; height: 29px; margin: 11px 0 0 0; border: 1px solid #09c; background-color: #09c; border-radius: 0 4px 4px 0; color: #FFF;" type="submit" value="Zoeken" />
+                    }
+                </div>
+                @RenderBody()
+            </div>
+            <!-- end of center content -->
+
+            <div class="right_content">
+                <div class="shopping_cart">
+                    <div class="cart_title">Winkelwagen</div>
+
+                    <div class="cart_details">
+                        @if (Model.ListMand.Count == 0)
+                        {
+                            <text>Geen producten</text>
+                        }
+                        else
+                        {
+                            double totaalprijs = 0;
+                            for (int x = 0; x < Model.ListMand.Count; x++)
+                            {
+                                totaalprijs += (@Model.ListMand[x].Prijs * @Model.ListMand[x].Aantal);
+                            }
+                            @Model.ListMand.Count <text>producten</text><br />
+                            <span class="border_cart"></span>
+                                <text>Totaal: </text><span class="price">&euro;@String.Format("{0:0.00}", totaalprijs)</span>
+                        }
+                    </div>
+
+                    <div class="cart_icon"><a href="/Winkelmand/Index/" title="header=[Bekijk winkelwagen] body=[&nbsp;] fade=[on]">
+                        <img src="@Url.Content("~/Content/images/shoppingcart.png")" alt="" title="" width="48" height="48" border="0" /></a></div>
+
+                </div>
+
+
+                <div class="title_box">Nieuwe Producten</div>
+                <div class="border_box">
+                    <div class="product_title"><a href="/Product/Detail?pid=5">Adidas t-shirt</a></div>
+                    <div class="product_img"><a href="/Product/Detail?pid=5">
+                        <img src="@Url.Content("~/Content/Upload/adidas_tshirt.png")" alt="" title="" border="0" /></a></div>
+                    <div class="prod_price"><span class="price">&euro;49.45</span></div>
+                </div>
+
+                <div class="title_box">Onze Merken</div>
+
+                <ul class="left_menu">
+                    @for (int j = 0; j < Model.ListMerk.Count; j++)
+                    {
+                        <li class="@if (j % 2 == 0)
+                                   { <text>even</text> }
+                                   else
+                                   { <text>odd</text> }"><a href="/Producten?mid=@Model.ListMerk[j].ID">@Model.ListMerk[j].Naam</a></li>
+                    }
+                </ul>
+            </div>
+            <!-- end of right content -->
+
+
+        </div>
+        <!-- end of main content -->
+
+
+
+        <div class="footer">
+
+
+            <div class="left_footer">
+                <img src="@Url.Content("~/Content/images/footer_logo.png")" alt="" title="" width="170" height="49"/>
+            </div>
+
+            <div class="center_footer">
+                IntoSport 2013 &copy;<br />
+                <br />
+                <img src="@Url.Content("~/Content/images/payment.gif")" alt="" title="" />
+            </div>
+
+            <div class="right_footer">
+                <a href="/Home">Home</a>
+                <a href="/Info/Over">Over</a>
+                <a href="/Info/Sitemap">Sitemap</a>
+                <a href="/Account/MijnAccount">Account</a>
+                <a href="/Info/Contact">Contact</a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end of main_container -->
+</body>
+</html>

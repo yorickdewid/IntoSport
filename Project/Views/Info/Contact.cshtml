@@ -1,0 +1,56 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "Contact";
+    if(ViewBag.ContactSucces == true){
+        <script type="text/javascript">
+            alert("Je bericht is met succes verzonden!");
+        </script>
+        ViewBag.ContactSucces = false;
+    }
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Contact</div>
+<p style="font-weight:bold">We zitten in het centrum van Groningen, je kan ons vinden op dit adres:<br><br></p>
+
+    <p>IntoSport</p>
+    <p>Straatlaan 33</p>
+    <p>8888XX Groningen<br /><br /></p>
+
+<p style="font-weight:bold">Mocht je van onze garantie gebruik willen maken, dan kan je het product opsturen naar:<br /><br /></p>
+
+<p>IntoSport Retouren</p>
+<p>Antwoordnummer 123</p>
+<p>8888XX Groningen<br /><br /></p>
+
+<p style="font-weight:bold">Als je contact met ons wilt opnemen, kan je dit formulier gebruiken: <br /><br /></p>
+
+@using (Html.BeginForm("Contact", "Info"))
+{
+@Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td style="width:35%"><div>Jouw email adres:</div></td>
+                <td><div>@Html.EditorFor(model => Model.email.berichtVan)
+                         @Html.ValidationMessageFor(model => Model.email.berichtVan)</div></td>
+            </tr>
+            <tr>
+                <td><div>Onderwerp</div></td>
+                <td><div>@Html.EditorFor(model => Model.email.Onderwerp)
+                         @Html.ValidationMessageFor(model => Model.email.Onderwerp)</div></td>
+            </tr>
+            <tr>
+                <td><div>Bericht</div></td>
+                <td><div>@Html.TextAreaFor(model => Model.email.Bericht)
+                         @Html.ValidationMessageFor(model => Model.email.Bericht)</div></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="text-align:right"><input type = "submit" value = "Verstuur" /></td>
+            </tr>
+        </table>
+}
+                </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>

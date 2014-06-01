@@ -1,0 +1,24 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "WijzigProduct";
+}
+
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Afbeelding Wijzigen</div>
+        <span>Alleen png, jpg of gif's kunnen worden gebruikt als afbeelding</span><br /><br />
+@using (Html.BeginForm("WijzigThumb", "Beheer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.DetailProduct.ID)
+    <div class="editor-label">Bestand</div>
+    <div class="editor-field"><input type="file" name="imageName" /></div>
+    <p>
+    <input type="submit" value="Opslaan" />
+    </p>
+    
+    <p><a href="/Beheer/Producten" style="text-align: right; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;">Vorige</a></p>
+}
+                    </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>

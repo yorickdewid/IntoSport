@@ -1,0 +1,55 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "Beheer";
+}
+
+<h2>Beheer</h2>
+@if (User.IsInRole("Beheerder"))
+{
+    <table class="beheertab">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Wijzig</th>
+                <th>Verwijder</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.ListProduct.Count; i++)
+            {
+                <tr>
+                    <td>@Model.ListProduct[i].Naam
+                    </td>
+                    <td>@Html.ActionLink("Wijzig", "WijzigProduct", new { pid = Model.ListProduct[i].ID })</td>
+                    <td>@Html.ActionLink("Verwijder", "VerwijderProduct", new { pid = Model.ListProduct[i].ID })</td>
+                </tr>                      
+            }<tr>
+                <td>@Html.ActionLink("Toevoegen", "ToevoegenProduct")</td>
+            </tr>
+        </tbody>
+    </table>
+            //----------------Categorieen
+    <br />
+    <table class="beheertab">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Wijzig</th>
+                <th>Verwijder</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.ListCategorie.Count; i++)
+            {
+                <tr>
+                    <td>@Model.ListCategorie[i].Naam
+                    </td>
+                    <td>@Html.ActionLink("Wijzig", "WijzigCategorie")</td>
+                    <td>@Html.ActionLink("Verwijder", "VerwijderCategorie")</td>
+                </tr>                      
+            }<tr>
+                <td>@Html.ActionLink("Toevoegen", "ToevoegenCategorie")</td>
+            </tr>
+        </tbody>
+    </table>
+}

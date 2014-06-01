@@ -1,0 +1,54 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "WijzigGebruiker";
+}
+
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Gebruikers Wijzigen</div>
+
+
+        @using (Html.BeginForm("WijzigGebruiker", "Beheer"))
+        {
+            @Html.HiddenFor(model => Model.gebruiker.ID)
+            <div class="editor-label">Naam</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Naam)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Naam)
+            </div>
+            <div class="editor-label">Adres</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Adres)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Adres)
+            </div>
+            <div class="editor-label">Postcode</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Postcode)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Postcode)
+            </div>
+            <div class="editor-label">Woonplaats</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Woonplaats)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Woonplaats)
+            </div>
+            <div class="editor-label">E-mail</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Email)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Email)
+            </div>
+            <div class="editor-label">Telefoonnummer</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Telefoonnummer)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Telefoonnummer)
+            </div>
+            @Html.HiddenFor(model => Model.gebruiker.Wachtwoord)
+            /*
+            <div class="editor-label">Wachtwoord</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Wachtwoord)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Wachtwoord)
+            </div>
+             */
+            <p>
+                <input type="submit" value="opslaan" />
+            </p>
+    
+            <p><a href="/Beheer/GebruikerBeheer" style="text-align: right; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration: none;">Vorige</a></p>
+        }
+    </div>
+    <div class="bottom_prod_box_big"></div>
+</div>

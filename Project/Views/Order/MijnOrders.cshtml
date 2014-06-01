@@ -1,0 +1,58 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "MijnOrders";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Mijn Orders</div>
+        <table style="width: 95%;">
+            @if (Model.ListOrder.Count == 0)
+            {
+                <tr>
+                    <td colspan="5">Geen orders bekend</td>
+                </tr>
+            }
+            else
+            {
+                <tr style="font-weight: bold">
+                    <td style="width: 5%">&nbsp;</td>
+                    <td style="width: 20%">Ordernummer</td>
+                    <td style="width: 35%">Datum</td>
+                    <td style="width: 20%;">Status</td>
+                    <td style="width: 20%;">Totaal</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="border-bottom: 1px #999999 dashed"></div>
+                    </td>
+                </tr>
+                for (int q = 0; q < Model.ListOrder.Count; q++)
+                {
+                <tr>
+                    <td>
+                        @if (Model.ListOrder[q].Status == 4 || Model.ListOrder[q].Status == 5 || Model.ListOrder[q].Status == 6)
+                        {
+                            <img src="@Url.Content("~/Content/images/checked.png")" width="16" height="16" alt="Verwerkt" title="Verwerkt" border="0" />
+                        }
+                        else if (Model.ListOrder[q].Status == 1 || Model.ListOrder[q].Status == 2 || Model.ListOrder[q].Status == 3)
+                        {
+                            <a href="#"onclick="bevestigkeus('/Order/Cancel?oid=@Model.ListOrder[q].ID')">
+                                <img src="@Url.Content("~/Content/images/cancel.png")" width="16" height="16" alt="Annuleren" title="Annuleren" border="0" /></a>                            }
+                    </td>
+                    <td><a href="/Order/Detail?oid=@Model.ListOrder[q].ID" style="text-decoration: none; color: #1c4a52;">@Model.ListOrder[q].ID</a></td>
+                    <td>@Model.ListOrder[q].CreateDate</td>
+                    <td>@Model.ListOrder[q].StrStatus</td>
+                    <td>&euro;@String.Format("{0:0.00}", (Model.ListOrder[q].Totaal))</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="border-bottom: 1px #999999 dashed"></div>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="bottom_prod_box_big"></div>
+</div>

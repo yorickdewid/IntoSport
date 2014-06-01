@@ -1,0 +1,46 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "WijzigAccount";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Wijzig Account</div>
+        @using (Html.BeginForm("WijzigAccount", "Account"))
+        {
+            @Html.HiddenFor(model => model.gebruiker.ID)
+            <div class="editor-label">Naam</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Naam)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Naam)
+            </div>
+            <div class="editor-label">Adres</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Adres)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Adres)
+            </div>
+            <div class="editor-label">Postcode</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Postcode)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Postcode)
+            </div>
+            <div class="editor-label">Woonplaats</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Woonplaats)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Woonplaats)
+            </div>
+            <div class="editor-label">E-mail</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Email)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Email)
+            </div>
+            <div class="editor-label">Telefoonnummer</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Telefoonnummer)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Telefoonnummer)
+            </div>
+            <div class="editor-label">Wachtwoord</div>
+            <div class="editor-field">@Html.EditorFor(model => Model.gebruiker.Wachtwoord)
+                @Html.ValidationMessageFor(model => Model.gebruiker.Wachtwoord)
+            </div>
+            <p>
+                <input type="submit" value="opslaan" /><input onclick="location.href = '/Account'" type="button" value="Annuleren" />
+            </p>
+        }
+    </div>
+    <div class="bottom_prod_box_big"></div>
+</div>

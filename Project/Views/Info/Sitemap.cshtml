@@ -1,0 +1,46 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "Sitemap";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Sitemap</div>
+        <div style="padding-left: 10px">
+            <h3>Home</h3>
+            <ul>
+                <li><a href="/Home/Index">Home</a></li>
+            </ul>
+
+            <h3>Categorien</h3>
+            <ul>
+                @for(int i = 0; i < Model.ListCategorie.Count; i++)
+                {
+                            <li><a href="/Producten?cid=@Model.ListCategorie[i].ID">@Model.ListCategorie[i].Naam</a></li>
+                }
+            </ul>
+
+            <h3>Merken</h3>
+            <ul>
+                @for(int i = 0; i < Model.ListMerk.Count; i++)
+                {
+                            <li><a href="/Producten?mid=@Model.ListMerk[i].ID">@Model.ListMerk[i].Naam</a></li>
+                }
+            </ul>
+
+            <h3>Info</h3>
+            <ul>
+                <li><a href="/Info/Over">Over</a></li>
+                <li><a href="/Info/Contact">Contact</a></li>
+                <li><a href="/Info/Verzenden">Verzending Informatie</a></li>
+            </ul>
+
+            <h3>Account</h3>
+            <ul>
+                <li><a href="/Account/Logon">Inloggen</a></li>
+                <li><a href="/Account/MijnAccount">Mijn Account</a></li>
+            </ul>
+            </div>
+        </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>

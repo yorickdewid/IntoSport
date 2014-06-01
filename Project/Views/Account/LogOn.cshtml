@@ -1,0 +1,36 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "LogOn";
+}
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+    <div class="product_title_big">Inloggen</div>
+    @using (Html.BeginForm("LogOn", "Account"))
+    {
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td style="width:35%"><div>Email</div></td>
+                <td><div>@Html.EditorFor(model=>model.LogOnViewModel.Email)
+                         @Html.ValidationMessageFor(model => model.LogOnViewModel.Email)</div></td>
+            </tr>
+            <tr>
+                <td><div>Wachtwoord</div></td>
+                <td><div>@Html.EditorFor(model => model.LogOnViewModel.Wachtwoord)
+                         @Html.ValidationMessageFor(model => model.LogOnViewModel.Wachtwoord)</div></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="text-align:right"><input type = "submit" value = "Log in" /></td>
+            </tr>
+        </table>
+        <br />
+        <a href="/Account/Registreren" style="height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;" >Nog geen account? Registreer dan nu!</a>
+        <br />
+        <br />
+        <a href="/Account/WachtwoordVergeten" style="height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;" >Wachtwoord vergeten?</a>
+    }
+    </div>
+    <div class="bottom_prod_box_big"></div> 
+</div>

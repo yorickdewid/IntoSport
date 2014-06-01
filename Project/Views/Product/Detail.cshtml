@@ -1,0 +1,25 @@
+﻿@model Project.Models.MainView
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">            
+                 
+            <div class="product_img_big">
+            <a href="#" onclick="window.open('@Url.Content("~/Content/Upload/" + Model.DetailProduct.Image)','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="@Url.Content("~/Content/Upload/" + Model.DetailProduct.Image)" alt="" width="94" height="92" title="" border="0" /></a></div>
+                <div class="details_big_box">
+                    <div class="product_title_big">@Model.DetailProduct.Naam</div>
+                    <div class="specifications">
+                    Voorraad: <span class="blue">@Model.DetailProduct.StrVoorraad</span><br />
+                    Garantie: <span class="blue">24 Maanden</span><br />
+                    Transport: <span class="blue">PostNL</span><br /><br />
+                    <span class="blue">@Model.DetailProduct.Beschrijving</span><br />
+                    </div>
+                    <div class="prod_price_big"><span class="price">&euro;@String.Format("{0:0.00}", Model.DetailProduct.Prijs)</span></div>
+                         
+                <a href="/Winkelmand/Add?pid=@Model.DetailProduct.ID" class="addtocart">Aan winkelwagen toevoegen</a></div>                        
+    </div>
+    <div class="bottom_prod_box_big"></div>                                
+</div>

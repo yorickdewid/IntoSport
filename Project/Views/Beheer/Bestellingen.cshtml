@@ -1,0 +1,44 @@
+﻿@model Project.Models.MainView
+           
+@{
+    ViewBag.Title = "Bestellingen";
+}
+
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_title_big">Bestellingen</div>
+
+<table class="beheertab" style="width: 95%">
+    <thead>
+        <tr>
+        <th>Ordernummer</th>
+        <th>Aantal producten</th>
+        <th>Totaalbedrag</th>
+        <th>Status</th>
+        <th>Producten</th>
+        <th>Status</th></tr>
+    </thead> 
+    <tbody>
+ @for (int i = 0; i < Model.ListOrder.Count; i++)
+            {
+                <tr>
+                    <td>@Model.ListOrder[i].ID
+                    </td>
+                    <td>@Model.ListOrder[i].aantalProducten
+                    </td>
+                    <td>@String.Format("{0:0.00}", (Model.ListOrder[i].Totaal))
+                    </td>
+                    <td>@Model.ListOrder[i].StrStatus
+                    </td>
+                    <td><a href="/Beheer/BekijkProducten?oid=@Model.ListOrder[i].ID" style="text-decoration: none; color: #1c4a52;">Producten</a></td>
+                    <td><a href="/Beheer/WijzigStatus?oid=@Model.ListOrder[i].ID" style="text-decoration: none; color: #1c4a52;">Wijzig</a></td>
+                </tr>                      
+            }
+    </tbody>
+</table>
+
+<p><a href="/Beheer/KlantenLijst" style="text-align: right; height: 27px; background-color: white; width: 195px; line-height: 27px; color: #1c4a52; border-radius: 10px; padding: 7px; text-decoration:none;">Vorige</a></p>
+    </div>
+    <div class="bottom_prod_box_big"></div>                   
+</div>
